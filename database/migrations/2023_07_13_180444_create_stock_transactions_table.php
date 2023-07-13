@@ -10,11 +10,14 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('product_suppliers', function (Blueprint $table) {
+        Schema::create('stock_transactions', function (Blueprint $table) {
             $table->id();
-            $table->unique(['supplier_id', 'product_id']);
-            $table->foreignId('supplier_id')->constrained()->cascadeOnDelete();
             $table->foreignId('product_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('entered_by_id')->constrained('users')->cascadeOnDelete();
+            $table->integer('reference_number')->unique();
+            $table->integer('quantity');
+            $table->dateTime('transaction_at');
+            $table->enum('transaction_type', ['cash', 'transfer', 'bank']);
             $table->timestamps();
         });
     }
@@ -24,6 +27,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('product_suppliers');
+        Schema::dropIfExists('stock_transactions');
     }
 };
