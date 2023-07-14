@@ -17,8 +17,8 @@ return new class extends Migration {
             $table->string('name');
             $table->string('code')->unique();
             $table->text('description')->nullable();
-            $table->integer('stock')->default(0);
-            $table->integer('safety_stock');
+            $table->unsignedInteger('stock')->default(0);
+            $table->unsignedInteger('safety_stock');
             $table->timestamps();
         });
     }
