@@ -33,12 +33,7 @@ class ProductCategoryController extends Controller
    */
   public function store(StoreProductCategoryRequest $request)
   {
-    $validated = arrayToObject($request->validated());
-    $productCategory = ProductCategory::create([
-      'name' => $validated->name,
-      'code' => $validated->code,
-      'parent_id' => $validated->parent
-    ]);
+    $productCategory = ProductCategory::create($request->validated());
 
     return to_route('product-categories.edit', $productCategory);
   }
@@ -68,12 +63,7 @@ class ProductCategoryController extends Controller
    */
   public function update(UpdateProductCategoryRequest $request, ProductCategory $productCategory)
   {
-    $validated = arrayToObject($request->validated());
-    $productCategory->update([
-      'name' => $validated->name,
-      'code' => $validated->code,
-      'parent_id' => $validated->parent
-    ]);
+    $productCategory->update($request->validated());
 
     return to_route('product-categories.edit', $productCategory);
   }

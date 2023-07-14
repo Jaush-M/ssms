@@ -25,7 +25,7 @@ class UpdateProductCategoryRequest extends FormRequest
     return [
       'name' => 'required|string|max:255',
       'code' => 'required|string|max:255|unique:product_categories,code,' . $this->product_category->id,
-      'parent' => 'nullable|exists:product_categories,id',
+      'parent_id' => 'nullable|exists:product_categories,id',
     ];
   }
 }
