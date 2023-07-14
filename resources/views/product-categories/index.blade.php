@@ -55,6 +55,9 @@
           @endforeach
         </tbody>
       </table>
+      @empty($product_categories->all())
+        <div class="pt-6 text-center text-sm font-medium">No categories found...</div>
+      @endempty
     </div>
   </x-section>
 </x-layout>
