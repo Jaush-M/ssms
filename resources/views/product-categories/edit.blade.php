@@ -38,12 +38,12 @@
         <label class="label" for="parent">
           <span class="label-text cursor-pointer">Choose parent category</span>
         </label>
-        <select class="select select-bordered select-md w-full" id='parent' name='parent'>
+        <select class="select select-bordered select-md w-full" id='parent_id' name='parent_id'>
           <option disabled selected>
             Choose parent category
           </option>
           @foreach (\App\Models\ProductCategory::all() as $parent_category)
-            <option @selected($parent_category->id === $product_category->id) value={{ $parent_category->id }}>{{ $parent_category->name }}</option>
+            <option @selected($parent_category->id === $product_category->parent_id) value={{ $parent_category->id }}>{{ $parent_category->name }}</option>
           @endforeach
         </select>
       </div>
