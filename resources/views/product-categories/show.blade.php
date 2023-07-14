@@ -2,7 +2,7 @@
   <x-slot:breadcrumb>
     <ul>
       <li><a href={{ route('product-categories.index') }}>Home</a></li>
-      <li><a href={{ route('product-categories.index') }}>Categories</a></li>
+      <li><a href={{ route('product-categories.index') }}>Product Categories</a></li>
       <li>{{ $product_category->id }}</li>
     </ul>
   </x-slot:breadcrumb>

@@ -2,13 +2,13 @@
   <x-slot:breadcrumb>
     <ul>
       <li>Home</li>
-      <li>Categories</li>
+      <li>Product Categories</li>
     </ul>
   </x-slot:breadcrumb>
 
   <x-section>
     <div class='flex items-center justify-between'>
-      <h4 class='text-xl font-bold tracking-tight'>List of all Categories</h4>
+      <h4 class='text-xl font-bold tracking-tight'>List of all Product Categories</h4>
       <a href={{ route('product-categories.create') }}>
         <x-icon-s-plus class='h-6 w-6' />
       </a>
@@ -56,7 +56,7 @@
         </tbody>
       </table>
       @empty($product_categories->all())
-        <div class="pt-6 text-center text-sm font-medium">No categories found...</div>
+        <div class="pt-6 text-center text-sm font-medium">no product categories found...</div>
       @endempty
     </div>
   </x-section>
