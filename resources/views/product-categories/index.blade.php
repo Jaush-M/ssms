@@ -6,7 +6,7 @@
     </ul>
   </x-slot:breadcrumb>
 
-  <x-section>
+  <x-section class='space-y-4'>
     <div class='flex items-center justify-between'>
       <h4 class='text-xl font-bold tracking-tight'>List of all Product Categories</h4>
       <a href={{ route('product-categories.create') }}>
