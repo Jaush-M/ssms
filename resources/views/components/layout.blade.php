@@ -10,16 +10,25 @@
   <link href="https://cdn.jsdelivr.net/npm/daisyui@3.2.1/dist/full.css" rel="stylesheet" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
 
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.getElementById('darkmode').onchange = () => {
+        const theme = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
+        document.body.setAttribute('data-theme', theme)
+      };
+    })
+  </script>
+
   @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="font-sans antialiased">
+<body class="font-sans antialiased" data-theme='dark'>
   <header class="breadcrumbs flex select-none justify-between px-12 pt-8 pb-4 text-sm">
     {{ $breadcrumb }}
 
     <div>
       <label class="swap swap-rotate">
-        <input type="checkbox" />
+        <input id="darkmode" type="checkbox" />
 
         <x-heroicon-o-sun class="swap-on h-7 w-7" />
         <x-heroicon-o-moon class="swap-off h-7 w-7" />
