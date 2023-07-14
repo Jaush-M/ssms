@@ -14,8 +14,17 @@
 </head>
 
 <body class="font-sans antialiased">
-  <header class="breadcrumbs select-none px-12 pt-8 pb-4 text-sm">
+  <header class="breadcrumbs flex select-none justify-between px-12 pt-8 pb-4 text-sm">
     {{ $breadcrumb }}
+
+    <div>
+      <label class="swap swap-rotate">
+        <input type="checkbox" />
+
+        <x-heroicon-o-sun class="swap-on h-7 w-7" />
+        <x-heroicon-o-moon class="swap-off h-7 w-7" />
+      </label>
+    </div>
   </header>
   <main class="relative flex min-h-screen flex-col" id='root'>
     {{ $slot }}
