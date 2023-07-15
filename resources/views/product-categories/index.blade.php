@@ -34,22 +34,35 @@
               </td>
               <td>{{ $product_category->parent_id }}</td>
               <td class='space-x-2'>
-                <form action="{{ route('product-categories.destroy', $product_category) }}"
-                  class="absolute -m-1 h-1 w-1 overflow-hidden whitespace-nowrap border-none p-0"
-                  id={{ 'del_product_' . $product_category->id }} method="POST">
-                  @csrf
-                  @method('delete')
-                </form>
                 <x-button href="{{ route('product-categories.show', $product_category) }}">
                   {{ __('view') }}
                 </x-button>
                 <x-button href="{{ route('product-categories.edit', $product_category) }}">
                   {{ __('edit') }}
                 </x-button>
-                <button class="btn btn-ghost btn-xs hover:bg-transparent hover:underline"
-                  form={{ 'del_product_' . $product_category->id }} type="submit">
+                <x-button onclick="event.preventDefault(); del_product_{{ $product_category->id }}.showModal();">
                   {{ __('delete') }}
-                </button>
+                </x-button>
+                <dialog class="modal" id="del_product_{{ $product_category->id }}">
+                  <form action="{{ route('product-categories.destroy', $product_category) }}" class="modal-box"
+                    method="POST">
+                    @csrf
+                    @method('delete')
+                    <h3 class="text-lg font-bold">Delete Product Category</h3>
+                    <p class="py-4">Are you sure you want to delete category,
+                      <strong>{{ $product_category->name }}</strong>?
+                    </p>
+                    <div class="modal-action flex space-x-2">
+                      <button
+                        class="btn w-32 flex-auto bg-gray-600 text-white transition-colors duration-150 ease-in-out hover:bg-gray-500"
+                        onclick="event.preventDefault(); del_product_{{ $product_category->id }}.close();"
+                        type='button'>Cancel</button>
+                      <button autofocus
+                        class="btn w-64 flex-auto bg-violet-600 text-white transition-colors duration-150 ease-in-out hover:bg-violet-500"
+                        type='submit'>Confirm</button>
+                    </div>
+                  </form>
+                </dialog>
               </td>
             </tr>
           @endforeach
