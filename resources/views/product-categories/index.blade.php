@@ -26,12 +26,6 @@
         </thead>
         <tbody>
           @foreach ($product_categories as $product_category)
-            <form action="{{ route('product-categories.destroy', $product_category) }}"
-              class="absolute -m-1 h-1 w-1 overflow-hidden whitespace-nowrap border-none p-0" id="del_product"
-              method="POST">
-              @csrf
-              @method('delete')
-            </form>
             <tr>
               <td>{{ $product_category->id }}</td>
               <td>{{ $product_category->name }}</td>
@@ -40,14 +34,20 @@
               </td>
               <td>{{ $product_category->parent_id }}</td>
               <td class='space-x-2'>
+                <form action="{{ route('product-categories.destroy', $product_category) }}"
+                  class="absolute -m-1 h-1 w-1 overflow-hidden whitespace-nowrap border-none p-0"
+                  id={{ 'del_product_' . $product_category->id }} method="POST">
+                  @csrf
+                  @method('delete')
+                </form>
                 <x-button href="{{ route('product-categories.show', $product_category) }}">
                   {{ __('view') }}
                 </x-button>
                 <x-button href="{{ route('product-categories.edit', $product_category) }}">
                   {{ __('edit') }}
                 </x-button>
-                <button class="btn btn-ghost btn-xs hover:bg-transparent hover:underline" form="del_product"
-                  type="submit">
+                <button class="btn btn-ghost btn-xs hover:bg-transparent hover:underline"
+                  form={{ 'del_product_' . $product_category->id }} type="submit">
                   {{ __('delete') }}
                 </button>
               </td>
