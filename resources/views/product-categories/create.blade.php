@@ -20,7 +20,8 @@
           <span class="label-text cursor-pointer">Name of category</span>
         </label>
         <input class="input input-bordered input-md w-full" id='name' name='name' placeholder="Category Name"
-          type="text" />
+          type="text" value="{{ old('name') }}" />
+        <x-input-error :errors="$errors->get('name')" class="mt-2" />
       </div>
 
       <div>
@@ -28,7 +29,8 @@
           <span class="label-text cursor-pointer">Category identifier code</span>
         </label>
         <input class="input input-bordered input-md w-full" id='code' name='code' placeholder="Category Code"
-          type="text" />
+          type="text" value="{{ old('code') }}" />
+        <x-input-error :errors="$errors->get('code')" class="mt-2" />
       </div>
 
       <div>
@@ -41,6 +43,7 @@
             <option value={{ $product_category->id }}>{{ $product_category->name }}</option>
           @endforeach
         </select>
+        <x-input-error :errors="$errors->get('parent_id')" class="mt-2" />
       </div>
 
       <div class='flex'>

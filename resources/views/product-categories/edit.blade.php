@@ -24,6 +24,7 @@
         </label>
         <input class="input input-bordered input-md w-full" id='name' name='name' placeholder="Category Name"
           type="text" value={{ $product_category->name }} />
+        <x-input-error :errors="$errors->get('name')" class="mt-2" />
       </div>
 
       <div>
@@ -32,6 +33,7 @@
         </label>
         <input class="input input-bordered input-md w-full" id='code' name='code' placeholder="Category Code"
           type="text" value={{ $product_category->code }} />
+        <x-input-error :errors="$errors->get('code')" class="mt-2" />
       </div>
 
       <div>
@@ -46,6 +48,7 @@
             <option @selected($parent_category->id === $product_category->parent_id) value={{ $parent_category->id }}>{{ $parent_category->name }}</option>
           @endforeach
         </select>
+        <x-input-error :errors="$errors->get('parent_id')" class="mt-2" />
       </div>
 
       <div class='flex'>
