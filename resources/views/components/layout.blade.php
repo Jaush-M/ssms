@@ -11,18 +11,19 @@
   <script src="https://cdn.tailwindcss.com"></script>
 
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('darkmode').onchange = () => {
-        const theme = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
-        document.body.setAttribute('data-theme', theme)
+        localStorage.getItem('theme') === 'dark' ? localStorage.setItem('theme', 'light') : localStorage.setItem('theme', 'dark');
+
+        document.body.setAttribute('data-theme', localStorage.getItem('theme'));
       };
+
+      document.body.setAttribute('data-theme', localStorage.getItem('theme'));
     })
   </script>
-
-  @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="font-sans antialiased" data-theme='dark'>
+<body class="font-sans antialiased" data-theme="light">
   <header class="breadcrumbs flex select-none justify-between px-12 pt-8 pb-4 text-sm">
     {{ $breadcrumb }}
 
